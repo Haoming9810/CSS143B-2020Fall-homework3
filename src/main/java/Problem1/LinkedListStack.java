@@ -13,22 +13,29 @@ public class LinkedListStack<T> implements Stack<T> {
 
     @Override
     public boolean push(T val) {
-        // homework
-        return false;   // place holder
+
+        if (data == null){
+            return false;
+        }
+        else {
+            data.push(val);
+            return true;
+        }
     }
 
     @Override
     public T pop() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        T result = data.pop();
+
+        return result;
     }
 
     @Override
     public T peek() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+
+       T val = data.peek();
+
+       return val;
     }
 
     @Override

@@ -11,6 +11,7 @@ public class Problem3 {
         // homework
         // !!! must use your ArrayStack or LinkedListStack in problem 1
         // print with the following format. System.out.println() will not pass test.
-        print.println("hello world");   // place holder
+
+        print.println(list); // place holder
     }
 }
