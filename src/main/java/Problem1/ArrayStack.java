@@ -9,19 +9,22 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     public ArrayStack(int capacity) {
-        size = capacity;
-        data = (T[])new Object[size] ;
+        if(capacity > 0){
+            data = (T[]) new Object[capacity];
+        }
+        size = 0;
     }
 
     @Override
     public boolean push(T val) {
-        if (size == 0) {
+        if (size == data.length) {
 
             return false;
-        } else {
-            size++;
-            return true;
         }
+        data[size++] = val;
+
+        return true;
+
 
     }
 
@@ -34,10 +37,8 @@ public class ArrayStack<T> implements Stack<T> {
 
             return null;
         }
-        T val = data[size];
-
-
-        size--;
+        T val = data[size--];
+        data[size] = null;
         return val;
 
     }
@@ -49,9 +50,10 @@ public class ArrayStack<T> implements Stack<T> {
 
             return null;
         }
-        T val = data[size];
-        size --;
-        return val;
+       // T val = data[size];
+       // size --;
+       // return val;
+        return data[size - 1];
     }
 
     @Override

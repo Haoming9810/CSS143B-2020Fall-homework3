@@ -6,36 +6,34 @@ public class LinkedListStack<T> implements Stack<T> {
     // use Java LinkedList to store the data
     // do not change member variables
     private LinkedList<T> data;
+    private T val;
 
     public LinkedListStack() {
-        // homework
+       data = new LinkedList<T>(); // homework
     }
 
     @Override
     public boolean push(T val) {
 
-        if (data == null){
-            return false;
-        }
-        else {
-            data.push(val);
-            return true;
-        }
+        data.push(val);
+        return true;
+
     }
 
     @Override
     public T pop() {
-        T result = data.pop();
-
-        return result;
+        if (data.size() == 0) {
+            return null;
+        }
+        T val = data.pop();
+        return val;
     }
 
     @Override
     public T peek() {
 
-       T val = data.peek();
-
-       return val;
+        T val = data.peek();
+        return val;
     }
 
     @Override

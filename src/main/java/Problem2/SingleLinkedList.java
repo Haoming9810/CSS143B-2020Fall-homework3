@@ -28,21 +28,27 @@ public class SingleLinkedList {
     }
 
     public int removeAll(int valueToRemove) {
-        ListNode p1 = new ListNode();
-        p1.next = head;
-        ListNode p = p1;
-        while(p.next != null){
-            if(p.next.val == valueToRemove){
-                ListNode next = p.next;
-                p.next = next.next;
+        if( head== null){
+            return 0;
+        }
+        int remove = 0;
+        ListNode current =head;
+        while (current.next != null){
+            if(current.next.val == valueToRemove){
+                current.next = current.next.next;
+                size--;
+                remove++;
             }else{
-                p = p.next;
+                current = current.next;
             }
         }
+        return remove;
 
-        return valueToRemove;
 
     }
+
+
+
 
     // reverse the linked list nodes iteratively (no recursion)
     public ListNode reverse() {
@@ -52,16 +58,19 @@ public class SingleLinkedList {
         }
 
         ListNode listToDo = head.next;
-        ListNode reversedList = head;
+        ListNode reversedList = head.next.next;
 
-        reversedList.next = null;
 
-        while (listToDo != null) {
-            ListNode temp = listToDo;
-            listToDo = listToDo.next;
 
-            temp.next = reversedList;
-            reversedList = temp;
+        while (reversedList != null) {
+
+            listToDo.next = reversedList.next;
+            reversedList.next = head.next;
+            head.next = reversedList;
+            reversedList = listToDo.next;
+
+
+
         }
 
         return reversedList;

@@ -9,9 +9,15 @@ import java.io.PrintStream;
 public class Problem3 {
     public static void printListInReverse(ListNode list, PrintStream print) {
         // homework
-        // !!! must use your ArrayStack or LinkedListStack in problem 1
-        // print with the following format. System.out.println() will not pass test.
+        Stack<Integer> stack = new LinkedListStack<>();
+        ListNode ptr = list.next;
+        while(ptr != null){
+            stack.push(ptr.val);
+            ptr = ptr.next;
+        }
+        while(stack.size()!= 0){
+            print.println(stack.pop());
+        }
 
-        print.println(list); // place holder
     }
 }

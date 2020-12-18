@@ -10,5 +10,8 @@ public interface Stack<T> {
     T peek();
 
     int size();
+
+
+
 }
 
