@@ -12,19 +12,68 @@ public class SingleLinkedList {
 
     // copy constructor
     public SingleLinkedList(SingleLinkedList list) {
-        // homework
+        if(list == null) {
+            return;
+        }
+        ListNode p1 = new ListNode();
+        head=p1;
+        ListNode p2 = list.head.next;
+        while (p2 != null){
+            p1.next = new ListNode(p2.val);
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        size = list.size;
+// homework
     }
 
     public int removeAll(int valueToRemove) {
-        // homework
-        // in-place
-        return -1; // place holder
+        if( head== null){
+            return 0;
+        }
+        int remove = 0;
+        ListNode current =head;
+        while (current.next != null){
+            if(current.next.val == valueToRemove){
+                current.next = current.next.next;
+                size--;
+                remove++;
+            }else{
+                current = current.next;
+            }
+        }
+        return remove;
+
+
     }
 
+
+
+
     // reverse the linked list nodes iteratively (no recursion)
-    public void reverse() {
-        // homework
-        // in-place
+    public ListNode reverse() {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode listToDo = head.next;
+        ListNode reversedList = head.next.next;
+
+
+
+        while (reversedList != null) {
+
+            listToDo.next = reversedList.next;
+            reversedList.next = head.next;
+            head.next = reversedList;
+            reversedList = listToDo.next;
+
+
+
+        }
+
+        return reversedList;
     }
 
     // do not change any function below
